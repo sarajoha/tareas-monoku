@@ -109,9 +109,20 @@ class Cancion:
 
 
 #Polimorfismo
-class  
+class
 #ponerle hijos a la clase
 #hacer un metodo que puedan usar todos los hijos de la clase
+
+#class genero musical, hijos merengue, salsa, bachata,
+#todas las clases hijas tienen el metodo bailar, pero este es distinto para cada una
+#ej, bachata paso paso cadera izq y derecha
+
+#ejemplo 2
+#animal clase padre, clases hijas gato, perro, hamster, pez
+#metodo Polimorfismo comer = 'nom nom nom'
+#necesidades fisiologicas, pis y pupu
+#dormir = ZzZzZz
+
 
 
 #Herencia
