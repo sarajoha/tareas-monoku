@@ -238,23 +238,32 @@ class Squib(Persona):
             return 'Puede ver dementores'
 
 
-harry = Mago('Harry Potter', 15)
-print(harry.nombre())
-print(harry.ver_dementores())
-print(harry.hacer_hechizo('Expecto Patronum'))
-
-petunia = Muggle('Petunia Dursley', 40)
-print(petunia.nombre())
-print(petunia.ver_dementores())
-print(petunia.hacer_hechizo('Expecto Patronum'))
-
-filch = Squib('Argus Filch', 58)
-print(filch.nombre())
-print(filch.ver_dementores())
-print(filch.hacer_hechizo('Lumos'))
+# harry = Mago('Harry Potter', 15)
+# print(harry.nombre())
+# print(harry.ver_dementores())
+# print(harry.hacer_hechizo('Expecto Patronum'))
+#
+# petunia = Muggle('Petunia Dursley', 40)
+# print(petunia.nombre())
+# print(petunia.ver_dementores())
+# print(petunia.hacer_hechizo('Expecto Patronum'))
+#
+# filch = Squib('Argus Filch', 58)
+# print(filch.nombre())
+# print(filch.ver_dementores())
+# print(filch.hacer_hechizo('Lumos'))
 
 #Recoleccion de Basura
+def recoleccion_basura():
+    print('Python usa un conteo de referencia simple como recolector de basura.')
+    print('Esto quiere decir que al no haber mas referencias a un objeto')
+    print('-el numero de referencias es 0-, el objeto puede ser recolectado como basura.')
+    print('Para acceder al recolector de basura se usa el modulo gc.')
+    print('Este permite desactivar la recoleccion, ajustar la frecuencia de recoleccion')
+    print('y colocar diferentes opciones de debugging.')
 
+
+recoleccion_basura()
 
 
 #Modelar partido de tenis
