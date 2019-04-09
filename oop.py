@@ -2,7 +2,7 @@
 Ejercicios de la clase de Programacion Orientada a Objectos
 Prof. Juan
 """
-
+import random
 
 #Abstraccion
 class Celular:
@@ -263,7 +263,88 @@ def recoleccion_basura():
     print('y colocar diferentes opciones de debugging.')
 
 
-recoleccion_basura()
+#recoleccion_basura()
 
 
 #Modelar partido de tenis
+
+#jugador o equipo
+#instrumentos? raqueta, pelota, etc
+#cancha, tipos de suelo, medidas,
+#anotacion? valor de los puntos? set?
+#random true false
+def puntos(num):
+
+    cuenta = 0
+    anota = 1
+    no_anota = 0
+
+    for i in range(num):
+        punto = random.choice([True, False])
+
+        if punto:
+            cuenta = cuenta + anota
+        else:
+            cuenta = cuenta + no_anota
+
+    return cuenta
+        #if cuenta >= 3:
+        #    break
+
+
+def juego(jugador1, jugador2):
+
+    cuenta1 = puntos(7)
+    cuenta2 = puntos(7)
+
+    print(cuenta1, cuenta2)
+
+    dif = cuenta1 - cuenta2
+    diff = abs(dif)
+
+    print(dif)
+
+    if cuenta1 == cuenta2:
+        print('Empate, sigan jugando')
+        cuenta1 = cuenta1 + puntos(3)
+        cuenta2 = cuenta2 + puntos(3)
+        dif = cuenta1 - cuenta2
+        diff = abs(dif)
+        print(cuenta1, cuenta2, diff)
+
+    elif diff < 2:
+        print('La diferencia no es suficiente, sigan jugando')
+        cuenta1 = cuenta1 + puntos(3)
+        cuenta2 = cuenta2 + puntos(3)
+        dif = cuenta1 - cuenta2
+        diff = abs(dif)
+        print(cuenta1, cuenta2, diff)
+
+    elif (cuenta1 <= 4) or (cuenta2 <= 4):
+        print('Se gana con minimo 5 puntos, sigan jugando')
+        cuenta1 = cuenta1 + puntos(3)
+        cuenta2 = cuenta2 + puntos(3)
+        dif = cuenta1 - cuenta2
+        diff = abs(dif)
+        print(cuenta1, cuenta2, diff)
+
+    if (cuenta1 >= 5) or (cuenta2 >=5) and (diff >= 2):
+        print('game over')
+        if cuenta1 >= 5:
+            print('gana ' + jugador1)
+        else:
+            print('gana ' + jugador2)
+
+
+juego('ramon', 'federer')
+
+#cambiar programa, asignar ptos random range(2-6)
+#if jug 1 == jug 2
+#correr de nuevo y update
+#if
+#if jug1 > 3 and dif 2, gana jug 1
+#if jug 2 > 3 and dif 2, gana jug 2
+#if empate correr de nuevo
+#jugada t calcular dif
+#hacerlo con un while, while dif < 2:
+# random
