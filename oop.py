@@ -33,7 +33,7 @@ class Celular:
         print('(^_^)')
 
 
-samsung = Celular('Samsung', 'Galaxy J7 Duo', 'Android 8.0', '32GB', '4GB', '5.5"')
+# samsung = Celular('Samsung', 'Galaxy J7 Duo', 'Android 8.0', '32GB', '4GB', '5.5"')
 
 #samsung.marca_modelo()
 #samsung.especificaciones()
@@ -61,8 +61,8 @@ class Banda:
         self.hits.extend(h)
 
 
-foo_f = Banda('Foo Fighters', 'Rock', ['Dave Grohl', 'Taylor Hawkins'], ['Concrete and Gold'],
-                ['The Pretender', 'Everlong', 'Times like these'])
+# foo_f = Banda('Foo Fighters', 'Rock', ['Dave Grohl', 'Taylor Hawkins'], ['Concrete and Gold'],
+#                 ['The Pretender', 'Everlong', 'Times like these'])
 
 # print(foo_f.albums)
 #
@@ -121,7 +121,7 @@ class Mascota(object):
         self.__nombre = nombre
 
     def comer(self):
-        return 'nom nom nom' #pez, glup glup glup
+        return 'nom nom nom'
 
     def dormir(self):
         return 'ZzZzZz'
@@ -197,8 +197,61 @@ class Pez(Mascota):
 
 
 #Herencia
+class Persona(object):
+    def __init__(self, nombre, edad):
+        self.__nombre = nombre
+        self.__edad = edad
+
+    def nombre(self):
+        return self.__nombre
+
+    def edad(self):
+        return self.__edad
+
+    def ver_dementores(self):
+        return 'No puede ver dementores'
+
+    def hacer_hechizo(self, hechizo):
+        return 'No puede hacer ' + hechizo
 
 
+class Mago(Persona):
+        def __init__(self, nombre, edad):
+            super().__init__(nombre, edad)
+
+        def ver_dementores(self):
+            return 'Puede ver dementores'
+
+        def hacer_hechizo(self, hechizo):
+            return  r'\(o.o)--- ' + hechizo + '!!! ***'
+
+
+class Muggle(Persona):
+        def __init__(self, nombre, edad):
+            super().__init__(nombre, edad)
+
+class Squib(Persona):
+        def __init__(self, nombre, edad):
+            super().__init__(nombre, edad)
+
+        def ver_dementores(self):
+            return 'Puede ver dementores'
+
+
+harry = Mago('Harry Potter', 15)
+print(harry.nombre())
+print(harry.ver_dementores())
+print(harry.hacer_hechizo('Expecto Patronum'))
+
+petunia = Muggle('Petunia Dursley', 40)
+print(petunia.nombre())
+print(petunia.ver_dementores())
+print(petunia.hacer_hechizo('Expecto Patronum'))
+
+filch = Squib('Argus Filch', 58)
+print(filch.nombre())
+print(filch.ver_dementores())
+print(filch.hacer_hechizo('Lumos'))
 
 #Recoleccion de Basura
 
