@@ -3,6 +3,7 @@ Ejercicios de la clase de Programacion Orientada a Objectos
 Prof. Juan
 """
 
+
 #Abstraccion
 class Celular:
     def __init__(self, m, mo, so, alm, r, p):
@@ -90,10 +91,10 @@ class Cancion:
         return self.__artista
 
     #setter
-    def nuevo_nombre(self, nombre):
+    def set_nombre(self, nombre):
         self.__nombre = nombre
 
-    def nuevo_artista(self, artista):
+    def set_artista(self, artista):
         self.__artista = artista
 
 
@@ -102,27 +103,97 @@ class Cancion:
 # print(alive.nombre())
 # print(alive.artista())
 #
-# alive.nuevo_nombre('Come Alive')
+# alive.set_nombre('Come Alive')
 # print(alive.nombre())
-# alive.nuevo_artista('Foo Fighters')
+# alive.set_artista('Foo Fighters')
 # print(alive.artista())
 
 
 #Polimorfismo
-class
-#ponerle hijos a la clase
-#hacer un metodo que puedan usar todos los hijos de la clase
+class Mascota(object):
+    def __init__(self, nombre):
+        self.__nombre = nombre
 
-#class genero musical, hijos merengue, salsa, bachata,
-#todas las clases hijas tienen el metodo bailar, pero este es distinto para cada una
-#ej, bachata paso paso cadera izq y derecha
+    def nombre(self):
+        return self.__nombre
 
-#ejemplo 2
-#animal clase padre, clases hijas gato, perro, hamster, pez
-#metodo Polimorfismo comer = 'nom nom nom'
-#necesidades fisiologicas, pis y pupu
-#dormir = ZzZzZz
+    def set_nombre(self, nombre):
+        self.__nombre = nombre
 
+    def comer(self):
+        return 'nom nom nom' #pez, glup glup glup
+
+    def dormir(self):
+        return 'ZzZzZz'
+
+    def evacuar(self):
+        return ''
+
+
+class Perro(Mascota):
+        def __init__(self, nombre):
+            super().__init__(nombre)
+
+        def evacuar(self):
+            return '*Afuera de la casa*'
+
+
+class Gato(Mascota):
+        def __init__(self, nombre):
+            super().__init__(nombre)
+
+        def evacuar(self):
+            return '*En la caja de arena*'
+
+
+class Hamster(Mascota):
+        def __init__(self, nombre):
+            super().__init__(nombre)
+
+        def evacuar(self):
+            return '*En todo el periodico de la cajita*'
+
+
+class Pez(Mascota):
+        def __init__(self, nombre):
+            super().__init__(nombre)
+
+        def comer(self):
+            return 'glup glup glup'
+
+        def evacuar(self):
+            return '???'
+
+
+# ramon = Perro('Ramon')
+# print(ramon.nombre())
+# print(ramon.comer())
+# print(ramon.dormir())
+# print(ramon.evacuar())
+
+#print('')
+
+# blanca = Gato('Blanca')
+# print(blanca.nombre())
+# print(blanca.comer())
+# print(blanca.dormir())
+# print(blanca.evacuar())
+
+#print('')
+
+# roberto = Hamster('Roberto')
+# print(roberto.nombre())
+# print(roberto.comer())
+# print(roberto.dormir())
+# print(roberto.evacuar())
+
+#print('')
+
+# maria = Pez('Maria')
+# print(maria.nombre())
+# print(maria.comer())
+# print(maria.dormir())
+# print(maria.evacuar())
 
 
 #Herencia
