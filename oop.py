@@ -268,83 +268,97 @@ def recoleccion_basura():
 
 #Modelar partido de tenis
 
-#jugador o equipo
+#jugador o equipo, hacer clase para jugador, en las funciones
+#preguntar si jugador es instancia clase jugador
+#clase de cancha,
 #instrumentos? raqueta, pelota, etc
 #cancha, tipos de suelo, medidas,
-#anotacion? valor de los puntos? set?
-#random true false
-def puntos(num):
-
-    cuenta = 0
-    anota = 1
-    no_anota = 0
-
-    for i in range(num):
-        punto = random.choice([True, False])
-
-        if punto:
-            cuenta = cuenta + anota
-        else:
-            cuenta = cuenta + no_anota
-
-    return cuenta
-        #if cuenta >= 3:
-        #    break
+#ponerle docstring a las funciones
+#pedir input para tipo de juego y nombres
 
 
-def juego(jugador1, jugador2):
+def jugar(num1, num2, top):
+    """
+    """
 
-    cuenta1 = puntos(7)
-    cuenta2 = puntos(7)
+    puntaje_jug1 = random.randint(num1, top)
+    puntaje_jug2 = random.randint(num2, top)
 
-    print(cuenta1, cuenta2)
+    diff = abs(puntaje_jug1 - puntaje_jug2)
 
-    dif = cuenta1 - cuenta2
-    diff = abs(dif)
-
-    print(dif)
-
-    if cuenta1 == cuenta2:
-        print('Empate, sigan jugando')
-        cuenta1 = cuenta1 + puntos(3)
-        cuenta2 = cuenta2 + puntos(3)
-        dif = cuenta1 - cuenta2
-        diff = abs(dif)
-        print(cuenta1, cuenta2, diff)
-
-    elif diff < 2:
-        print('La diferencia no es suficiente, sigan jugando')
-        cuenta1 = cuenta1 + puntos(3)
-        cuenta2 = cuenta2 + puntos(3)
-        dif = cuenta1 - cuenta2
-        diff = abs(dif)
-        print(cuenta1, cuenta2, diff)
-
-    elif (cuenta1 <= 4) or (cuenta2 <= 4):
-        print('Se gana con minimo 5 puntos, sigan jugando')
-        cuenta1 = cuenta1 + puntos(3)
-        cuenta2 = cuenta2 + puntos(3)
-        dif = cuenta1 - cuenta2
-        diff = abs(dif)
-        print(cuenta1, cuenta2, diff)
-
-    if (cuenta1 >= 5) or (cuenta2 >=5) and (diff >= 2):
-        print('game over')
-        if cuenta1 >= 5:
-            print('gana ' + jugador1)
-        else:
-            print('gana ' + jugador2)
+    return puntaje_jug1, puntaje_jug2, diff
 
 
-juego('ramon', 'federer')
+def ganador(resultado, jugador1, jugador2):
+    """
+    """
 
-#cambiar programa, asignar ptos random range(2-6)
-#if jug 1 == jug 2
-#correr de nuevo y update
-#if
-#if jug1 > 3 and dif 2, gana jug 1
-#if jug 2 > 3 and dif 2, gana jug 2
-#if empate correr de nuevo
-#jugada t calcular dif
-#hacerlo con un while, while dif < 2:
-# random
+    if resultado[0] > resultado[1]:
+        print('Gano ' + jugador1)
+    else:
+        print('Gano ' + jugador2)
+
+
+def sonidos_tenis(tipo):
+    """
+    """
+
+    if tipo == 'juego':
+        min = 1
+        max = 5
+    elif tipo == 'set':
+        min = 4
+        max = 7
+    else:
+        min = 5
+        max = 9
+
+    for i in range(random.randint(min, max)):
+        print('pafff')
+        print('    paff')
+        print('')
+        print('pa')
+        print('  pafff')
+        print('guapash')
+    print('')
+
+
+def tenis(tipo, jugador1, jugador2, dif_min=2, pts1=0, pts2=0):
+    """
+    """
+
+    if tipo == 'juego':
+        pts_min = 5
+    elif tipo == 'set' or tipo == 'partido':
+        pts_min = 6
+    else:
+        return print('Input no valido')
+
+    print('Que empiece el ' + tipo)
+    sonidos_tenis(tipo)
+
+    resultado = jugar(pts1, pts2, pts_min)
+    jug1, jug2, dif  = resultado[0], resultado[1], resultado[2]
+    max_val = max(jug1, jug2)
+
+    while dif < dif_min or max_val < pts_min:
+        resultado = jugar(jug1 , jug2, max_val+2)
+        jug1, jug2, dif  = resultado[0], resultado[1], resultado[2]
+        max_val = max(jug1, jug2)
+
+
+    print('Fin del ' + tipo)
+
+    ganador(resultado, jugador1, jugador2)
+
+    print('El marcador fue:')
+    print(str(resultado[0]) + '-' + str(resultado[1]))
+
+    return resultado[0], resultado[1]
+
+
+#tenis('juego', 'Ramon', 'Julian')
+#tenis('set', 'Nata', 'Yeison')
+#tenis('partido', 'Jose', 'Estefany') #juego
+#tenis('partido', 'Jose', 'Estefany', pts1=3, pts2=2)
+#tenis('fes', 'Sara', 'Luis')
