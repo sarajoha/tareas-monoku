@@ -279,6 +279,14 @@ def recoleccion_basura():
 
 def jugar(num1, num2, top):
     """
+    Inputs:
+    - num1 = Puntaje (numero entero) con que empieza el contador del jugador #1
+    - num2 = Puntaje (numero entero) con que empieza el contador del jugador #2
+    - top = Puntaje maximo que puden tener
+    Outputs:
+    - puntaje_jug1 = Puntaje final del jugador #1  (numero entero)
+    - puntaje_jug2 = Puntaje final del jugador #2  (numero entero)
+    - diff = Diferencia absoluta entre el puntaje del jugador 1 y del 2
     """
 
     puntaje_jug1 = random.randint(num1, top)
@@ -291,6 +299,13 @@ def jugar(num1, num2, top):
 
 def ganador(resultado, jugador1, jugador2):
     """
+    Inputs:
+    - resultado = Tupla que contiene el puntaje del jugador #1, el del jugador #2
+                    y la diferencia absoluta entre los dos puntajes
+    - jugador1 = Nombre del jugador #1
+    - jugador2 = Nombre del jugador #2
+    Output:
+    - Imprime el nombre del jugador ganador
     """
 
     if resultado[0] > resultado[1]:
@@ -301,6 +316,11 @@ def ganador(resultado, jugador1, jugador2):
 
 def sonidos_tenis(tipo):
     """
+    Input:
+    - tipo = Tipo de encuentro de tenis, puede ser juego, set o partido
+    Output:
+    Imprime sonidos onomatopeyicos de tenis, de acuerdo al tipo de encuentro
+    imprime una mayor o menor cantidad de sonidos
     """
 
     if tipo == 'juego':
@@ -325,6 +345,19 @@ def sonidos_tenis(tipo):
 
 def tenis(tipo, jugador1, jugador2, dif_min=2, pts1=0, pts2=0):
     """
+    Inputs:
+    - tipo = tipo de encuentro de tenis, puede ser juego, set o partido
+    - jugador1 = nombre del jugaodr #1
+    - jugador2 = nombre del jugador #2
+    - dif_min = diferencia minima entre los puntajes de los jugadores para
+                ganar un encuentro. El default es 2.
+    - pts1 = puntaje (numero entero) con que empieza el contador del jugador #1,
+            el default es 0
+    - pts2 = puntaje (numero entero) con que empieza el contador del jugador #2,
+            el default es 0
+    Outputs:
+    Retorna el resultado del encuentro, en forma de tupla. El resultado nunca queda en
+    empate y siempre existe una diferencia de dif_min entre los puntajes
     """
 
     if tipo == 'juego':
@@ -357,7 +390,7 @@ def tenis(tipo, jugador1, jugador2, dif_min=2, pts1=0, pts2=0):
     return resultado[0], resultado[1]
 
 
-#tenis('juego', 'Ramon', 'Julian')
+tenis('juego', 'Ramon', 'Julian')
 #tenis('set', 'Nata', 'Yeison')
 #tenis('partido', 'Jose', 'Estefany') #juego
 #tenis('partido', 'Jose', 'Estefany', pts1=3, pts2=2)
