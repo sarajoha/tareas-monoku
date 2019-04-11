@@ -33,13 +33,13 @@ class Celular:
         print('(^_^)')
 
 
-# samsung = Celular('Samsung', 'Galaxy J7 Duo', 'Android 8.0', '32GB', '4GB', '5.5"')
+samsung = Celular('Samsung', 'Galaxy J7 Duo', 'Android 8.0', '32GB', '4GB', '5.5"')
 
-#samsung.marca_modelo()
-#samsung.especificaciones()
+samsung.marca_modelo()
+samsung.especificaciones()
 
-#samsung.chatear('Whatsapp')
-#samsung.selfie()
+samsung.chatear('Whatsapp')
+samsung.selfie()
 
 
 #Encapsulamiento
@@ -63,16 +63,16 @@ class Banda:
 
 # foo_f = Banda('Foo Fighters', 'Rock', ['Dave Grohl', 'Taylor Hawkins'], ['Concrete and Gold'],
 #                 ['The Pretender', 'Everlong', 'Times like these'])
-
+#
 # print(foo_f.albums)
 #
-# foo_f.agregar_album(['Wasting Light'])
+# foo_f.agregar_albums(['Wasting Light'])
 #
 # print(foo_f.albums)
 #
 # INTEGRANTES = ['Pat Smear', 'Nate Mendel', 'Chris Shiflett', 'Rami Jaffee']
 #
-# foo_f.agregar_integrante(INTEGRANTES)
+# foo_f.agregar_integrantes(INTEGRANTES)
 #
 # print(foo_f.integrantes)
 
@@ -268,13 +268,44 @@ def recoleccion_basura():
 
 #Modelar partido de tenis
 
-#jugador o equipo, hacer clase para jugador, en las funciones
-#preguntar si jugador es instancia clase jugador
-#clase de cancha,
-#instrumentos? raqueta, pelota, etc
-#cancha, tipos de suelo, medidas,
-#ponerle docstring a las funciones
-#pedir input para tipo de juego y nombres
+
+class Jugador():
+    def __init__(self, nombre, raquetas):
+        self.__nombre = nombre
+        self.__raquetas = raquetas
+
+    def nombre(self):
+        return self.__nombre
+
+    def raquetas(self):
+        return self.__raquetas
+
+    def set_raquetas(self, raquetas):
+        self.__raquetas = raquetas
+
+jose = Jugador('Jose', 1)
+ramon = Jugador('Ramon', 1)
+nata = Jugador('Nata', 3)
+#print(isinstance(jose, Jugador))
+#print(jose.nombre())
+
+class Cancha():
+    def __init__(self, nombre, material, dimensiones='23,77m x 8,23m'):
+        self.__nombre = nombre
+        self.__material = material
+        self.__dimensiones = dimensiones
+
+    def nombre(self):
+        return self.__nombre
+
+    def material(self):
+        return self.__material
+
+    def dimensiones(self):
+        return self.__dimensiones
+
+
+wimbledon = Cancha('Wimbledon', 'cesped')
 
 
 def jugar(num1, num2, top):
@@ -343,11 +374,27 @@ def sonidos_tenis(tipo):
     print('')
 
 
-def tenis(tipo, jugador1, jugador2, dif_min=2, pts1=0, pts2=0):
+def check_jugadores(jugador1, jugador2):
+
+    if isinstance(jugador1, Jugador) and isinstance(jugador2, Jugador):
+        return True
+    else:
+        return False
+
+
+def check_cancha(cancha):
+
+    if isinstance(cancha, Cancha):
+        return True
+    else:
+        return False
+
+
+def tenis(tipo, jugador1, jugador2, cancha, dif_min=2, pts1=0, pts2=0):
     """
     Inputs:
     - tipo = tipo de encuentro de tenis, puede ser juego, set o partido
-    - jugador1 = nombre del jugaodr #1
+    - jugador1 = nombre del jugador #1
     - jugador2 = nombre del jugador #2
     - dif_min = diferencia minima entre los puntajes de los jugadores para
                 ganar un encuentro. El default es 2.
@@ -365,9 +412,17 @@ def tenis(tipo, jugador1, jugador2, dif_min=2, pts1=0, pts2=0):
     elif tipo == 'set' or tipo == 'partido':
         pts_min = 6
     else:
-        return print('Input no valido')
+        return print('Input no valido, puedes jugar un juego, set o partido de tenis')
+
+    jugadores_validos = check_jugadores(jugador1, jugador2)
+    cancha_valida = check_cancha(cancha)
+
+    if not jugadores_validos or not cancha_valida:
+        return print('Parece que tus jugadores o la cancha no son validos')
+
 
     print('Que empiece el ' + tipo)
+
     sonidos_tenis(tipo)
 
     resultado = jugar(pts1, pts2, pts_min)
@@ -382,16 +437,14 @@ def tenis(tipo, jugador1, jugador2, dif_min=2, pts1=0, pts2=0):
 
     print('Fin del ' + tipo)
 
-    ganador(resultado, jugador1, jugador2)
+    ganador(resultado, jugador1.nombre(), jugador2.nombre())
 
     print('El marcador fue:')
     print(str(resultado[0]) + '-' + str(resultado[1]))
 
-    return resultado[0], resultado[1]
+    #return resultado[0], resultado[1]
 
 
-tenis('juego', 'Ramon', 'Julian')
-#tenis('set', 'Nata', 'Yeison')
-#tenis('partido', 'Jose', 'Estefany') #juego
-#tenis('partido', 'Jose', 'Estefany', pts1=3, pts2=2)
-#tenis('fes', 'Sara', 'Luis')
+
+#tenis('set', jose, ramon, wimbledon)
+#tenis('partido', nata, ramon, wimbledon)
