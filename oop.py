@@ -448,3 +448,5 @@ def tenis(tipo, jugador1, jugador2, cancha, dif_min=2, pts1=0, pts2=0):
 
 #tenis('set', jose, ramon, wimbledon)
 #tenis('partido', nata, ramon, wimbledon)
+
+#Modelar juego de basquet, objetos y relaciones, no codigo
