@@ -23,7 +23,7 @@ class Direccion(models.Model):
     cliente = models.ManyToManyField(Cliente)
 
     def __str__(self):
-        return '%s %s %s %s' % (self.numero, self.calle, self.comuna, self.ciudad)
+        return f'Calle {self.calle}, numero {self.numero}, {self.comuna}, {self.ciudad}'
 
 
 class Fabrica(models.Model):
@@ -48,7 +48,7 @@ class PedidoCuerpo(models.Model):
     articulo = models.ForeignKey(Articulo, on_delete=models.PROTECT)
 
     def __str__(self):
-        return '%s %s' % (self.articulo, self.cantidad)
+        return f'{self.articulo}, {self.cantidad}'
 
 
 class PedidoCabecera(models.Model):
@@ -57,4 +57,4 @@ class PedidoCabecera(models.Model):
     cliente = models.ForeignKey(Cliente, on_delete=models.PROTECT))
 
     def __str__(self):
-        return '%s %s %s' % (self.cliente, self.pedido_cuerpo, self.fecha)
+        return f'{self.cliente}, pedido: {self.pedido_cuerpo}, {self.fecha}'
