@@ -1,23 +1,26 @@
+'''
+Tarea de modelos de Django
+'''
 #import models
 
 
 class Cliente(models.Model):
-    saldo = models.FloatField()
+    saldo = models.DecimalField()
     limite_credito = models.PositiveIntegerField(validators=[MaxValueValidator(3000000)])
-    descuento = models.FloatField()
-    #direccion = models.ManyToManyField(Direccion)
+    descuento = models.DecimalField()
+
 
 class Direccion(models.Model):
     numero = models.IntegerField()
     calle = models.CharField(max_length=30)
     comuna = models.CharField(max_length=20)
     ciudad = models.charField(max_length=20)
-    #cliente = models.ManyToManyField(Cliente)
+    cliente = models.ManyToManyField(Cliente)
 
 
 class Fabrica(models.Model):
     nombre = models.CharField(max_length=50)
-    tlf_contacto = models.PositiveIntegerField(max_length=10, validators=[MinLengthValidator(10)]) #minimo cifra de x numeros
+    tlf_contacto = models.PositiveIntegerField(max_length=10, validators=[MinLengthValidator(10)]) 
 
 
 class Articulo(models.Model):
