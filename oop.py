@@ -1,6 +1,5 @@
 """
 Ejercicios de la clase de Programacion Orientada a Objectos
-Prof. Juan
 """
 import random
 

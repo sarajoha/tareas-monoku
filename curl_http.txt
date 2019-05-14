@@ -1,0 +1,56 @@
+#curl GET
+curl -v https://jsonplaceholder.typicode.com/
+
+#curl Query HTTP headers and body
+curl -i https://jsonplaceholder.typicode.com/
+
+#curl Query ONLY HTTP headers
+curl -I https://jsonplaceholder.typicode.com/
+
+#curl POST #curl -d "option=value&something=anothervalue" -X POST https://flaviocopes.com/
+#POST request sending JSON
+curl -v --header "Content-Type: application/json" -d "{\"title\":\"foo\", \"body\":\"bar\", \"userId\": \"1\"}" https://jsonplaceholder.typicode.com/posts
+
+#reqres tests
+
+#get list users
+curl -i https://reqres.in/api/users?page=2
+
+#get user 2
+curl -i https://reqres.in/api/users/2
+
+#get user not found
+curl -i https://reqres.in/api/users/23
+
+#get list resources
+curl -i https://reqres.in/api/unknown
+
+#post create user
+#implicit post
+curl --header "Content-Type: application/json" -d "{"name":"morpheus", "job":"leader"}" https://reqres.in/api/users
+#explicit post
+curl --header -v "Content-Type: application/json" -d "{"name":"morpheus", "job":"leader"}" -X POST https://reqres.in/api/users
+
+#put update user
+curl --header -v "Content-Type: application/json" -d "{"name":"morpheus", "job":"zion resident"}" -X PUT https://reqres.in/api/users
+
+#patch update user
+curl --header -v "Content-Type: application/json" -d "{"name":"morpheus", "job":"zion resident"}" -X PATCH https://reqres.in/api/users
+
+#delete user ???
+curl -i -X DELETE https://reqres.in/api/users/2
+
+#post register user successful
+curl -d '{"email": "eve.holt@reqres.in", "password": "pistol"}' -H "Content-Type: application/json" -X POST https://reqres.in/api/register
+
+#post register user unsuccessful
+curl --header -v "Content-Type: application/json" -d "{"email":"eve.holt@reqres.in"}" -X POST https://reqres.in/api/register
+
+#post login successful
+curl -d '{"email": "eve.holt@reqres.in", "password": "cityslicka"}' -H "Content-Type: application/json" -X POST https://reqres.in/api/login
+
+#post login unsuccessful
+curl -d '{"email": "peter@klaven"}' -H "Content-Type: application/json" -X POST https://reqres.in/api/register
+
+#delayed response
+curl -i https://reqres.in/api/users?delay=3
